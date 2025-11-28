@@ -85,6 +85,20 @@
             </IconBase>
         );
 
+        const Building = (props) => (
+            <IconBase {...props}>
+                <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                <line x1="9" y1="22" x2="9" y2="22.01" />
+                <line x1="15" y1="22" x2="15" y2="22.01" />
+                <line x1="12" y1="22" x2="12" y2="22.01" />
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <line x1="4" y1="10" x2="20" y2="10" />
+                <line x1="4" y1="14" x2="20" y2="14" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+                <line x1="4" y1="6" x2="20" y2="6" />
+            </IconBase>
+        );
+
         const DollarSign = (props) => (
             <IconBase {...props}>
                 <line x1="12" x2="12" y1="2" y2="22" />
@@ -152,14 +166,6 @@
             </IconBase>
         );
 
-        const Save = (props) => (
-            <IconBase {...props}>
-                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
-                <polyline points="17 21 17 13 7 13 7 21" />
-                <polyline points="7 3 7 8 15 8" />
-            </IconBase>
-        );
-
         // --- CONTENT DATA ---
         const sections = [
             {
@@ -209,12 +215,70 @@
                 )
             },
             {
-                id: "structure",
-                title: "Corporate Structure",
+                id: "entity",
+                title: "Entity Structuring",
+                icon: <Building size={20} />,
+                content: (
+                    <div className="space-y-4 text-gray-700">
+                        <h2 className="text-2xl font-bold text-slate-800">3. Entity Structuring & Asset Protection</h2>
+                        <p>Choosing your legal structure is the foundation of your risk management strategy. In the pipeline inspection industry, you are working around critical infrastructure. If your cutter robot accidentally pierces a gas line or causes a sewage backup into a home, the liability is massive.</p>
+                        
+                        <div className="grid grid-cols-1 gap-6 mt-6">
+                            {/* Option 1: Sole Prop */}
+                            <div className="bg-white p-5 border-l-4 border-red-500 shadow-sm rounded-r-lg">
+                                <h3 className="text-lg font-bold text-slate-800">Option 1: Sole Proprietorship</h3>
+                                <p className="text-sm text-slate-600 mt-2"><strong>The Default Option.</strong> This is what you are if you do nothing but start working.</p>
+                                <ul className="mt-3 text-sm space-y-2 text-slate-700">
+                                    <li className="flex items-start gap-2"><span className="text-red-500 font-bold">⚠ Risk:</span> You and the business are the same person legally. If the business is sued, they can take your personal home, car, and savings.</li>
+                                    <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">ℹ Verdict:</span> <span className="font-semibold">Highly discouraged</span> for this industry due to high liability exposure.</li>
+                                </ul>
+                            </div>
+
+                            {/* Option 2: LLC */}
+                            <div className="bg-white p-5 border-l-4 border-green-500 shadow-sm rounded-r-lg">
+                                <h3 className="text-lg font-bold text-slate-800">Option 2: Limited Liability Company (LLC)</h3>
+                                <p className="text-sm text-slate-600 mt-2"><strong>The Industry Standard.</strong> Creates a legal wall between your personal assets and business liabilities.</p>
+                                <ul className="mt-3 text-sm space-y-2 text-slate-700">
+                                    <li className="flex items-start gap-2"><span className="text-green-600 font-bold">✓ Benefit:</span> Protects personal assets. "Pass-through" taxation (profits are taxed on your personal return).</li>
+                                    <li className="flex items-start gap-2"><span className="text-slate-900 font-bold">ℹ Note:</span> Requires an Operating Agreement (crucial if you ever add partners).</li>
+                                </ul>
+                            </div>
+
+                            {/* Option 3: S-Corp */}
+                            <div className="bg-white p-5 border-l-4 border-blue-500 shadow-sm rounded-r-lg">
+                                <h3 className="text-lg font-bold text-slate-800">Option 3: S-Corp Election</h3>
+                                <p className="text-sm text-slate-600 mt-2"><strong>The Tax Strategy.</strong> An LLC can request to be taxed as an S-Corp.</p>
+                                <ul className="mt-3 text-sm space-y-2 text-slate-700">
+                                    <li className="flex items-start gap-2"><span className="text-blue-600 font-bold">✓ Benefit:</span> Can save on Self-Employment Tax (15.3%) once your net profit exceeds ~$60,000–$80,000/year.</li>
+                                    <li className="flex items-start gap-2"><span className="text-amber-600 font-bold">⚠ Complexity:</span> Requires running formal payroll for yourself (W-2). Usually a "Year 2 or Year 3" move.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 bg-slate-100 p-5 rounded-lg border border-slate-200">
+                            <h3 className="font-bold text-slate-800 flex items-center gap-2">
+                                <span className="text-red-600">⚠</span> The Tennessee Trap: Franchise & Excise Tax
+                            </h3>
+                            <p className="text-sm text-slate-700 mt-2">
+                                Unlike many states, Tennessee charges LLCs and Corporations a <strong>Franchise & Excise (F&E) Tax</strong>. 
+                                Even if you lose money, you may still owe the minimum ($100).
+                            </p>
+                            <ul className="list-disc list-inside text-sm text-slate-700 mt-2 ml-2">
+                                <li><strong>Excise Tax:</strong> ~6.5% on net earnings.</li>
+                                <li><strong>Franchise Tax:</strong> Based on the greater of net worth or real/tangible property in TN.</li>
+                                <li><strong>Annual Report:</strong> You must file an Annual Report with the Secretary of State (~$300 fee for typical LLCs).</li>
+                            </ul>
+                        </div>
+                    </div>
+                )
+            },
+            {
+                id: "licensing",
+                title: "Licensing & Compliance",
                 icon: <Briefcase size={20} />,
                 content: (
                     <div className="space-y-4 text-gray-700">
-                        <h2 className="text-2xl font-bold text-slate-800">2.2 Corporate Structure & Compliance</h2>
+                        <h2 className="text-2xl font-bold text-slate-800">4. Licensing & Regulatory Compliance</h2>
                         
                         <h3 className="text-lg font-semibold text-slate-800">Business Licensing</h3>
                         <ul className="list-disc list-inside space-y-2 ml-4">
@@ -248,7 +312,7 @@
                 icon: <DollarSign size={20} />,
                 content: (
                     <div className="space-y-4 text-gray-700">
-                        <h2 className="text-2xl font-bold text-slate-800">3. Financial Engineering</h2>
+                        <h2 className="text-2xl font-bold text-slate-800">5. Financial Engineering</h2>
                         <p>Profitability depends on the "utilization rate"—billable feet per day vs. fixed costs.</p>
 
                         <h3 className="text-lg font-semibold text-slate-800 mt-4">Startup Capital Tiers</h3>
@@ -332,7 +396,7 @@
                 icon: <Wrench size={20} />,
                 content: (
                     <div className="space-y-4 text-gray-700">
-                        <h2 className="text-2xl font-bold text-slate-800">4. Technical Strategy & Maintenance</h2>
+                        <h2 className="text-2xl font-bold text-slate-800">6. Technical Strategy & Maintenance</h2>
                         <p>In this industry, equipment reliability is the primary determinant of profitability. A broken cable means zero revenue.</p>
                         
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -361,7 +425,7 @@
                 icon: <Target size={20} />,
                 content: (
                     <div className="space-y-4 text-gray-700">
-                        <h2 className="text-2xl font-bold text-slate-800">5. Market Strategy</h2>
+                        <h2 className="text-2xl font-bold text-slate-800">7. Market Strategy</h2>
                         <p>Navigating procurement in West TN requires registration and relationships.</p>
 
                         <h3 className="text-lg font-semibold text-slate-800">Where to Find Work</h3>
@@ -467,17 +531,20 @@
             addSection("1. Initial Knowledge Baseline", answers.initialKnowledge);
             addSection("2. Knowledge Gaps Identified", answers.knowledgeGaps);
 
-            // 2. Technical Autonomy
-            addSection("3. Technical Autonomy Assessment", answers.q_technical);
+            // 2. Entity Selection
+            addSection("3. Entity Selection Rationale", answers.q_entity);
 
-            // 3. Sales Physiology
-            addSection("4. Sales & Networking Strategy", answers.q_sales);
+            // 3. Technical Autonomy
+            addSection("4. Technical Autonomy Assessment", answers.q_technical);
 
-            // 4. Financial Resilience
-            addSection("5. Financial Resilience Plan", answers.q_finance);
+            // 4. Sales Physiology
+            addSection("5. Sales & Networking Strategy", answers.q_sales);
 
-            // 5. Scope Definition
-            addSection("6. Scope Definition (Cleaning vs. Inspecting)", answers.q_scope);
+            // 5. Financial Resilience
+            addSection("6. Financial Resilience Plan", answers.q_finance);
+
+            // 6. Scope Definition
+            addSection("7. Scope Definition (Cleaning vs. Inspecting)", answers.q_scope);
 
             doc.save("CCTV_Business_Plan_Workbook.pdf");
         };
@@ -565,7 +632,18 @@
                         
                         <div className="space-y-6">
                             <div className="bg-slate-50 p-4 rounded-lg">
-                                <label className="block font-semibold text-slate-800 mb-2">1. Technical Autonomy</label>
+                                <label className="block font-semibold text-slate-800 mb-2">1. Entity Selection Rationale</label>
+                                <p className="text-xs text-slate-500 mb-2 italic">Based on the risks (liability) and costs (TN F&E Tax), which entity structure are you leaning towards and why?</p>
+                                <textarea 
+                                    name="q_entity"
+                                    value={answers.q_entity || ''}
+                                    onChange={handleChange}
+                                    className="w-full h-24 p-3 border border-slate-300 rounded bg-white focus:ring-2 focus:ring-blue-500 text-sm"
+                                ></textarea>
+                            </div>
+
+                            <div className="bg-slate-50 p-4 rounded-lg">
+                                <label className="block font-semibold text-slate-800 mb-2">2. Technical Autonomy</label>
                                 <p className="text-xs text-slate-500 mb-2 italic">Can I repair my own equipment? If a cable breaks at 10:00 AM, do I have the skills/tools to fix it?</p>
                                 <textarea 
                                     name="q_technical"
@@ -576,7 +654,7 @@
                             </div>
 
                             <div className="bg-slate-50 p-4 rounded-lg">
-                                <label className="block font-semibold text-slate-800 mb-2">2. Sales Physiology</label>
+                                <label className="block font-semibold text-slate-800 mb-2">3. Sales Physiology</label>
                                 <p className="text-xs text-slate-500 mb-2 italic">Can I sell? Am I ready to walk into City Halls and attend pre-bid meetings?</p>
                                 <textarea 
                                     name="q_sales"
@@ -587,7 +665,7 @@
                             </div>
 
                             <div className="bg-slate-50 p-4 rounded-lg">
-                                <label className="block font-semibold text-slate-800 mb-2">3. Financial Resilience</label>
+                                <label className="block font-semibold text-slate-800 mb-2">4. Financial Resilience</label>
                                 <p className="text-xs text-slate-500 mb-2 italic">Municipalities pay slowly (Net 30/60). Can I float fuel/insurance for 3 months?</p>
                                 <textarea 
                                     name="q_finance"
@@ -598,7 +676,7 @@
                             </div>
 
                             <div className="bg-slate-50 p-4 rounded-lg">
-                                <label className="block font-semibold text-slate-800 mb-2">4. Scope Definition</label>
+                                <label className="block font-semibold text-slate-800 mb-2">5. Scope Definition</label>
                                 <p className="text-xs text-slate-500 mb-2 italic">Am I an Inspection Company or a Cleaning Company? (Cleaning requires water permits, jetter trucks).</p>
                                 <textarea 
                                     name="q_scope"
